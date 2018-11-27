@@ -4,7 +4,7 @@ This loader for Ishar: Legend of the Fortress removes the pointless and utterly 
 ## Installing
 Just copy ishar1.com to the folder where the game was installed, open dosboxishar1.conf in your favorite text editor, replace 'start.exe' in the autoexec section of the dosbox configuration file with 'ishar1.com' and save the changes.
 
-## Bulding from source code
+## Building from source code
 To build it from source code you'll need MASM, JWASM or [UASM.](http://www.terraspace.co.uk/uasm.html)
 
 
