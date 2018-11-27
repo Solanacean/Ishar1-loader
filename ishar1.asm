@@ -1,6 +1,6 @@
 ;******************************************************************************************
-; Ishar: Legend of the Fortress loader coded by Winterfury
-; Removes protection checks and the requirement to pay gold to save
+; Ishar: Legend of the Fortress (GOG version) loader
+; Removes copy protection and the requirement to pay gold to save
 ; To compile the source, use MASM or JWASM (http://www.japheth.de/JWasm.html)
 ;
 ; Dedicated to the memory of Dr. Detergent / UNT
@@ -20,7 +20,7 @@ start:
 
         mov     sp, program_length
         mov     ah, 4Ah
-        mov     bx, (program_length/16)+1         ; BX contains the number of 16-byte paragraphs (rounded)
+        mov     bx, (program_length/16)+1         ; BX = size of this loader in 16-byte paragraphs
         int     21h
 
 ; Prepare Environmental Parent Block (EPB)
@@ -108,9 +108,10 @@ NewInt21:
         mov     cx, [bp+CALLER_CS]
         mov     es, cx
 
-; Checking for mov di, [ss:0B1Ah] (36 8B 3E 1A 0B) / retn (C3) at CALLER_CS:7CB1
-; These are the last two instructions in the function which unpacks scripts
-; We're going to replace mov di, [ss:0B1Ah] (36 8B 3E 1A 0B) with Int 21h (CD 21)
+; Check for mov di, [ss:0B1Ah] (36 8B 3E 1A 0B) / retn (C3) sequence at CALLER_CS:7CB1
+; These are the last two instructions in the function handling unpacking of the game scripts
+; We're going to replace the first instruction, i.e. mov di, [ss:0B1Ah] (36 8B 3E 1A 0B) 
+; with Int 21h (CD 21)
 
         mov     di, 7CB1h
         cmp     word ptr es:[di], 8B36h
@@ -143,7 +144,7 @@ check_caller_csip:
         mov     ax, ss:[0BCAh]
         mov     ds, ax
         mov     di, cs:[addrTbl+bx]
-        call    word ptr cs:[jumpTbl+bx]          ; Call the according patching function
+        call    word ptr cs:[jumpTbl+bx]          ; Call the patching function
         mov     cs:[action], -1
         
 exit_handler:
@@ -202,7 +203,7 @@ popregs_jump_original_int21:
         pop     bp
 
 jump_original_int21:
-        db      0EAh                              ; Opcode of jmp segment:offset instruction
+        db      0EAh                              ; Opcode for jmp segment:offset instruction
 origInt21Addr  equ $
 origInt21Ofs    dw ?
 origInt21Seg    dw ?
