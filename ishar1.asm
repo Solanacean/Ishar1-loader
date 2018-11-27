@@ -18,9 +18,9 @@ start:
 
 ; Adjust memory size
 
-        mov     sp, program_length
+        mov     sp, PROGRAM_LENGTH
         mov     ah, 4Ah
-        mov     bx, (program_length/16)+1         ; BX = size of this loader in 16-byte paragraphs
+        mov     bx, (PROGRAM_LENGTH/16)+1         ; BX = size of this loader in 16-byte paragraphs
         int     21h
 
 ; Prepare Environmental Parent Block (EPB)
@@ -37,7 +37,7 @@ start:
         mov     [origInt21Ofs], bx                ; Store the original Int 21h offset
         mov     [origInt21Seg], es                ; Store the original Int 21h segment
         mov     ax, 2521h
-        mov     dx, NewInt21
+        mov     dx, offset NewInt21
         int     21h
 
 ; Load and execute the target
@@ -295,12 +295,12 @@ fnameTbl:
         fname16  'telep.io'
 
 jumpTbl:
-        dw patch_sos_io
-        dw patch_sosd_io
-        dw patch_sose_io
-        dw patch_sosi_io
-        dw patch_monstre_io
-        dw patch_telep_io
+        dw offset patch_sos_io
+        dw offset patch_sosd_io
+        dw offset patch_sose_io
+        dw offset patch_sosi_io
+        dw offset patch_monstre_io
+        dw offset patch_telep_io
 NUM_OF_ENTRIES = ($-jumpTbl) / 2
 
 addrTbl:
@@ -332,6 +332,6 @@ pgmName db 'start.exe', 0
 align 2
 STACK_LENGTH = 400h
 
-program_length = $ - start + STACK_LENGTH
+PROGRAM_LENGTH = $ - start + STACK_LENGTH
 
 END start
