@@ -7,4 +7,9 @@ Just copy ishar1.com to the game folder, open `dosboxishar1.conf` in your favori
 ## Building from source code
 To build it from source code you'll need MASM, JWASM or [UASM.](http://www.terraspace.co.uk/uasm.html)
 
+Run the following command:
 
+uasm64.exe -bin ishar1.asm (64-bit version of UASM)<br />
+uasm32.exe -bin ishar1.asm (32-bit version of UASM)
+
+`ishar1.bin` will be generated. Rename it to `ishar1.com`
