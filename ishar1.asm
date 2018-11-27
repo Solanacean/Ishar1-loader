@@ -243,13 +243,14 @@ patch_telep_io:
 ;       DS:SI points to str1
 ;       ES:DI points to str2 (must be lowercase)
 ; Modifies
-;       SI, DI
+;       SI, DI, Flags
 ; Returns
 ;       AX = 1 if the strings are equal
 ;       AX = 0 if the strings are not equal
 ;******************************************************************************************
 
 StringCompare PROC NEAR
+        cld
         dec     di
 
 next_char:
