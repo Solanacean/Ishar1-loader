@@ -1,7 +1,7 @@
 ;******************************************************************************************
 ; Ishar: Legend of the Fortress (GOG version) loader
-; Removes copy protection and the requirement to pay gold to save
-; To compile the source, use MASM or JWASM (http://www.japheth.de/JWasm.html)
+; Removes both copy protection and requirement to pay gold to save
+; Compile the source code with MASM, JWASM or UASM (http://www.terraspace.co.uk/uasm.html)
 ;
 ; Dedicated to the memory of Dr. Detergent / UNT
 ;******************************************************************************************
