@@ -1,5 +1,7 @@
 # Ishar: Legend of the Fortress loader
-This loader removes the pointless and incredibly annoying copy protection as well as the stupid requirement to pay gold to save. It is compatible with the version of the game currently being sold by GOG. This work is dedicated to the memory of [https://8bitlegends.com/dr-detergent](Dr. Detergent.)
+This loader removes the pointless and incredibly annoying copy protection as well as the stupid requirement to pay gold to save. It is compatible with the version of the game currently being sold by GOG. 
+
+The work is dedicated to the memory of [Dr. Detergent.](https://8bitlegends.com/dr-detergent/)
 
 ### Installing
 Just throw `ishar1.com` in the game's folder, open `dosboxishar1.conf` in your favorite text editor, replace the line `start.exe` in the autoexec section of the configuration file with `ishar1.com`, save the changes and you're good to go.
