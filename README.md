@@ -7,6 +7,6 @@ Just throw `ishar1.com` in the game's folder, open `dosboxishar1.conf` in your f
 ### Building from source code
 To be able to compile the source code you need MASM, JWASM or [UASM.](http://www.terraspace.co.uk/uasm.html) Build the binary with the following command:
 
-    uasm64.exe -bin ishar1.asm (replace uasm64.exe with uasm32.exe if you prefer the 32-bit version of UASM)
+    uasm64.exe -bin ishar1.asm (replace uasm64.exe with uasm32.exe for the 32-bit version of UASM)
 
 which will produce file `ishar1.bin`. Simply rename it to `ishar1.com`
